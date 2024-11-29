@@ -1,0 +1,20 @@
+# Ignore .env files (used for sensitive data like MongoDB URL)
+config.env
+.env
+
+# Ignore node_modules (commonly used in Node.js projects)
+node_modules/
+
+# Ignore log files
+*.log
+
+# Ignore environment-specific files (e.g., IDE settings)
+.idea/
+.vscode/
+
+# Ignore OS-specific files (e.g., macOS)
+.DS_Store
+
+# Ignore build directories
+build/
+dist/
