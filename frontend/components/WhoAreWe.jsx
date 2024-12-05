@@ -36,4 +36,4 @@ const WhoAreWe = () => {
   )
 }
 
-export default WhoAreWe
+export default WhoAreWe 
