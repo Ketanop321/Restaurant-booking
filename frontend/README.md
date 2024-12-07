@@ -1,1 +1,1 @@
- This is simple react project 
+ This is simple mern project 
