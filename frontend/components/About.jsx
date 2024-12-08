@@ -15,7 +15,6 @@ const About = () => {
             <p className="mid">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Provident possimus optio adipisci dolores impedit illum iusto
-               
               Necessitatibus fugit asperiores totam rem esse exercitationem
               iusto ipsum qui dolore ex, accusantium repellat mollitia
               repellendus.
