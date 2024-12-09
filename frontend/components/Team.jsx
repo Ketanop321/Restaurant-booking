@@ -9,7 +9,6 @@ const Team = () => {
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae
             fugit dicta, ipsum impedit quam laboriosam quas doloremque quia
-            perferendis laborum.
           </p>
         </div>
         <div className="team_container">
