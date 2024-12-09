@@ -56,12 +56,12 @@ const Reservation = () => {
     <section className="reservation" id="reservation">
       <div className="container">
         <div className="banner">
-          <img src="/reservation.png" alt="res" /> {/* Display an image related to reservation */}
+          <img src="/reservation.png" alt="res" />
         </div>
         <div className="banner">
           <div className="reservation_form_box">
-            <h1>MAKE A RESERVATION</h1>  {/* Title for the reservation section */}
-            <p>For Further Questions, Please Call</p>  {/* Optional instruction or message */}
+            <h1>MAKE A RESERVATION</h1>   
+            <p>For Further Questions, Please Call</p>  
             <form>
               {/* Form fields for user to input reservation details */}
               <div>
@@ -122,5 +122,4 @@ const Reservation = () => {
   );
 };
 
-// Export the component so it can be used in other parts of the application
-export default Reservation;
+ export default Reservation;
