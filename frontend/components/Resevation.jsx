@@ -1,5 +1,4 @@
-// Importing required dependencies
-import React from "react";  // React for building UI components
+ import React from "react";   
 import { HiOutlineArrowNarrowRight } from "react-icons/hi"; // Importing an icon for the button
 import axios from "axios";  // Axios for making HTTP requests
 import { useState } from "react";  // React hook to manage local state
@@ -23,6 +22,8 @@ const Reservation = () => {
 
     try {
       // Making a POST request to the backend to save reservation data
+      //axios: Yeh HTTP requests ko handle karta hai. Yeh POST request bhejne ke liye use hota hai.
+      //axios POST request: Yeh POST request bhejata hai backend ko reservation data (user ka naam, email, phone, etc.) bhejne ke liye.
       const { data } = await axios.post(
         "http://localhost:4000/api/v1/reservation/send",  // The backend API endpoint for reservation
         { firstName, lastName, email, phone, date, time },  // The form data to send to the backend
@@ -74,22 +75,22 @@ const Reservation = () => {
                 <input
                   type="text"
                   placeholder="Last Name"
-                  value={lastName}  // Bind the value to the lastName state variable
-                  onChange={(e) => setLastName(e.target.value)}  // Update the state whenever the input changes
+                  value={lastName}   
+                  onChange={(e) => setLastName(e.target.value)}   
                 />
               </div>
               <div>
                 <input
                   type="date"
                   placeholder="Date"
-                  value={date}  // Bind the value to the date state variable
-                  onChange={(e) => setDate(e.target.value)}  // Update the state whenever the input changes
+                  value={date}   
+                  onChange={(e) => setDate(e.target.value)}  
                 />
                 <input
                   type="time"
                   placeholder="Time"
-                  value={time}  // Bind the value to the time state variable
-                  onChange={(e) => setTime(e.target.value)}  // Update the state whenever the input changes
+                  value={time}  
+                  onChange={(e) => setTime(e.target.value)}   
                 />
               </div>
               <div>
@@ -103,11 +104,12 @@ const Reservation = () => {
                 <input
                   type="number"
                   placeholder="Phone"
-                  value={phone}  // Bind the value to the phone state variable
+                  value={phone}   
                   onChange={(e) => setPhone(e.target.value)}  // Update the state whenever the input changes
                 />
               </div>
-              {/* Submit button */}
+              {/* Submit button  */}
+              {/* Jab user form submit karta hai, toh handleReservation function call hota hai.*/}
               <button type="submit" onClick={handleReservation}>
                 RESERVE NOW{" "}
                 <span>
