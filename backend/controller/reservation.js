@@ -6,7 +6,7 @@
 //call hote hi send_reservation ke andar ka sara function execute hojata hai
 //or last me frontend ko success ya error ka msg bhejga 
 
-import { ErrorHandler } from "../error/error.js";   
+import { ErrorHandler } from "../middlewares/error.js";   
 import { Reservation } from "../models/reservationSchema.js";
 
 const send_reservation = async (req, res, next) => {
