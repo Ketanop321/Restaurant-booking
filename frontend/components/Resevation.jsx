@@ -18,39 +18,52 @@ const Reservation = () => {
 
   // Handle reservation form submission
   const handleReservation = async (e) => {
-    e.preventDefault();  // Prevents the default form submit behavior (refreshing the page)
+  e.preventDefault();  // Prevent default form submit behavior
 
-    try {
-      // Making a POST request to the backend to save reservation data
-      //axios: Yeh HTTP requests ko handle karta hai. Yeh POST request bhejne ke liye use hota hai.
-      //axios POST request: Yeh POST request bhejata hai backend ko reservation data (user ka naam, email, phone, etc.) bhejne ke liye.
-      const { data } = await axios.post(
-        "http://localhost:4000/api/v1/reservation/send",  // The backend API endpoint for reservation
-        { firstName, lastName, email, phone, date, time },  // The form data to send to the backend
-        {
-          headers: {
-            "Content-Type": "application/json",  // The request content type (JSON)
-          },
-          withCredentials: true,  // Indicates if cross-site Access-Control requests should be made using credentials
-        }
-      );
+  setLoading(true);  // Set loading state to true while the request is being made
 
-      // If the reservation is successful, show success toast and reset form data
-      toast.success(data.message);  // Show a success message
-      setFirstName("");  // Reset first name field
-      setLastName("");  // Reset last name field
-      setPhone(0);  // Reset phone number field
-      setEmail("");  // Reset email field
-      setTime("");  // Reset time field
-      setDate("");  // Reset date field
+  try {
+    // Make POST request to backend API
+    const { data } = await axios.post(
+      "http://localhost:4000/api/v1/reservation/send",  // API endpoint
+      { firstName, lastName, email, phone, date, time },  // Form data
+      {
+        headers: {
+          "Content-Type": "application/json",  // Set the content type to JSON
+        },
+        withCredentials: true,  // Ensure credentials are included in requests
+      }
+    );
 
-      // Navigate the user to a success page after the reservation is complete
-      navigate("/success");
-    } catch (error) {
-      // If an error occurs, show an error toast
-      toast.error(error.response.data.message);  // Show error message from the backend
+    // If request is successful, show success toast
+    toast.success(data.message);
+    // Reset form fields after success
+    setFirstName("");
+    setLastName("");
+    setPhone(0);
+    setEmail("");
+    setTime("");
+    setDate("");
+    // Redirect to success page
+    navigate("/success");
+
+  } catch (error) {
+    console.error('Reservation failed:', error);
+
+    // Check for network errors (AxiosError)
+    if (error.code === 'ERR_NETWORK') {
+      toast.error('Network error: Unable to reach the server. Please check your connection.');
+    } else if (!error.response) {
+      toast.error('An unexpected error occurred. Please try again later.');
+    } else {
+      // Display error message from the backend
+      toast.error(error.response?.data?.message || 'Reservation failed!');
     }
-  };
+  } finally {
+    setLoading(false);  // Reset loading state after request completes
+  }
+};
+
 
   // JSX markup for the Reservation component
   return (

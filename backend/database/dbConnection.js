@@ -6,6 +6,8 @@ dotenv.config();
 
 const connectWithRetry = async (retries = 5, interval = 5000) => {
   const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/RESERVATIONS";
+  //This is a local development fallback URI that assumes you have MongoDB running locally 
+  //on the default port (27017) and you want to connect to a database named RESERVATIONS.
   
   for (let i = 0; i < retries; i++) {
     try {
