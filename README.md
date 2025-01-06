@@ -31,5 +31,4 @@ Backend
 Node.js: JavaScript runtime for the server.
 Express.js: Backend framework for handling routes and middleware.
 Mongoose: For MongoDB database interactions.
-Database
-MongoD
+ 
